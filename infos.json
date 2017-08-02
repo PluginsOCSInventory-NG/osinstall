@@ -4,7 +4,7 @@
   "contributor" : [],
   "supportedAgent" : ["Windows"],
   "description" : {
-    "fr" : "Remonte la date dinstallation os",
+    "fr" : "Remonte la date installation os",
     "en" : "Retrieve operating system install date"
   }
 }
