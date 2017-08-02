@@ -18,7 +18,7 @@ if(AJAX){
 else{
 	$ajax=false;
 }
-	print_item_header("Operating system installation");
+	print_item_header("Operating system");
 
 	if (!isset($protectedPost['SHOW'])){
 		$protectedPost['SHOW'] = 'NOSHOW';
