@@ -31,6 +31,12 @@ else{
 	echo open_form($form_name);
 	$list_fields = array(
 		'Installation date' => 'INSTDATE',
+		'Build version' => 'BUILDVER',
+		'Code set' => 'CODESET',
+		'Country code' => 'COUNTRYCODE',
+		'OS language' => 'OSLANGUAGE',
+		'Current time zone' => 'CURTIMEZONE',
+		'Input language' => 'LOCALE'
 	);
 	$list_col_cant_del=$list_fields;
 	$default_fields= $list_fields;
