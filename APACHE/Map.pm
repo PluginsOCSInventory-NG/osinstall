@@ -23,7 +23,13 @@ $DATA_MAP{osinstall} = {
 		writeDiff => 0,
 		cache => 0,
 		fields => {
-            INSTDATE => {}
-			}
+            INSTDATE => {},
+            BUILDVER => {},
+			CODESET => {},
+			COUNTRYCODE => {},
+			OSLANGUAGE => {},
+			CURTIMEZONE => {},
+			LOCALE => {}
+}
 };
 1;
