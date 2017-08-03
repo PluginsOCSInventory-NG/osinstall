@@ -1,2 +1,2 @@
 # osinstall
-Retrieve Operating System installation date
+Retrieve Operating System installation date and build version
