@@ -1,22 +1,23 @@
 '----------------------------------------------------------
-' Script : Retrieve Windows installation informations (all OS between XP to W10 included)
-' Version : 1.0
-' Date  : 03/08/2017
-' Author : Stéphane PAUTREL
+' Script	: Retrieve Windows installation informations (all OS between XP to W10 - 32 and 64 bits)
+' Version	: 1.0
+' Date		: 04/08/2017
+' Author	: Stéphane PAUTREL
 '----------------------------------------------------------
 On Error Resume Next
 
 Const HKEY_LOCAL_MACHINE = &H80000002
 
-Dim objWMIService, dtmConvertedDate, colOperatingSystems, objOperatingSystem, dtmInstallDate, strRegistry
-
-Set objWMIService = GetObject("winmgmts:" _
-	& "{impersonationLevel=impersonate}!\\.\root\cimv2")
+Dim objWMIService, dtmConvertedDate, colOperatingSystems, objOperatingSystem
+Dim dtmInstallDate, strRegistry, BuildVersion
 
 Set dtmConvertedDate = CreateObject("WbemScripting.SWbemDateTime")
 
 Set oReg = GetObject("winmgmts:" _
 	& "{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")
+
+Set objWMIService = GetObject("winmgmts:" _
+	& "{impersonationLevel=impersonate}!\\.\root\cimv2")
 
 Set colItems = objWMIService.ExecQuery( "SELECT * FROM Win32_Processor", , 48 )
 
@@ -38,6 +39,12 @@ Set colOperatingSystems = objWMIService.ExecQuery _
 For Each objOperatingSystem in colOperatingSystems
 	dtmConvertedDate.Value = objOperatingSystem.InstallDate
 	dtmInstallDate = dtmConvertedDate.GetVarDate
+
+	' Add Windows XP compatibility (short version)
+	If (IsNull(BuildVersion)) Then
+		BuildVersion = objOperatingSystem.Version
+	End If
+	
 	Wscript.Echo _
 		"<OSINSTALL>" & VbCrLf &_
 		"<INSTDATE>" & dtmInstallDate & "</INSTDATE>" & VbCrLf &_
