@@ -1,9 +1,22 @@
 '----------------------------------------------------------
-' Script	: Retrieve Windows installation informations (all OS between XP to W10 - 32 and 64 bits)
-' Version	: 1.0
-' Date		: 04/08/2017
-' Author	: Stéphane PAUTREL
+' Plugin for OCS Inventory NG 2.x
+' Script : Retrieve Windows installation informations
+' Version : 1.01
+' Date : 21/04/2018
+' Author : Stephane PAUTREL (acb78.com)
 '----------------------------------------------------------
+' OS checked [X] on	32b	64b	(Professionnal edition)
+'	Windows XP		[X]
+'	Windows Vista	[X]	[X]
+'	Windows 7		[X]	[X]
+'	Windows 8.1		[X]	[X]
+'	Windows 10		[X]	[X]
+'	Windows 2k8R2		[X]
+'	Windows 2k12R2		[X]
+'	Windows 2k16		[X]
+' ---------------------------------------------------------
+' NOTE : No checked on Windows 8
+' ---------------------------------------------------------
 On Error Resume Next
 
 Const HKEY_LOCAL_MACHINE = &H80000002
@@ -12,13 +25,8 @@ Dim objWMIService, dtmConvertedDate, colOperatingSystems, objOperatingSystem
 Dim dtmInstallDate, strRegistry, BuildVersion
 
 Set dtmConvertedDate = CreateObject("WbemScripting.SWbemDateTime")
-
-Set oReg = GetObject("winmgmts:" _
-	& "{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")
-
-Set objWMIService = GetObject("winmgmts:" _
-	& "{impersonationLevel=impersonate}!\\.\root\cimv2")
-
+Set oReg = GetObject("winmgmts:root\default:StdRegProv")
+Set objWMIService = GetObject("winmgmts:root\cimv2")
 Set colItems = objWMIService.ExecQuery( "SELECT * FROM Win32_Processor", , 48 )
 
 For Each objItem in colItems
