@@ -3,7 +3,7 @@
   "author" : ["Stephane PAUTREL"],
   "contributor" : [],
   "supportedAgent" : ["Windows"],
-  "version" : "1.0",
+  "version" : "2.0",
   "licence" : "GPLv2",
   "description" : {
     "fr" : "Remonte la date installation, build et autres infos",
