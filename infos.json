@@ -1,6 +1,6 @@
 {
   "displayName" : "Operating system install date",
-  "author" : ["Stephane PAUTREL"],
+  "author" : ["Stephane PAUTREL", "Aaron JOHNSON"],
   "contributor" : [],
   "supportedAgent" : ["Windows"],
   "version" : "2.0",
